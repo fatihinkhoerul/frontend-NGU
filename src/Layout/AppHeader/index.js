@@ -1,18 +1,13 @@
 import React, {Fragment} from 'react';
 import cx from 'classnames';
+import {Link} from 'react-router-dom'
 
 import {connect} from 'react-redux';
 
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
-import HeaderLogo from '../AppLogo';
-
-import SearchBox from './Components/SearchBox';
-import MegaMenu from './Components/MegaMenu';
-import UserBox from './Components/UserBox';
-import HeaderRightDrawer from "./Components/HeaderRightDrawer";
-
 import HeaderDots from "./Components/HeaderDots";
+import {Button} from "reactstrap";
 
 class Header extends React.Component {
     render() {
@@ -32,20 +27,26 @@ class Header extends React.Component {
                     transitionEnter={false}
                     transitionLeave={false}>
 
-                    <HeaderLogo/>
-
-                    <div className={cx(
-                        "app-header__content",
-                        {'header-mobile-open': enableMobileMenuSmall},
-                    )}>
-                        <div className="app-header-left">
-                            <SearchBox/>
-                            <MegaMenu/>
-                        </div>
+                    <div className="header-dots">
                         <div className="app-header-right">
-                            <HeaderDots/>
-                            <UserBox/>
-                            <HeaderRightDrawer/>
+                            <Button className="mb-2 mr-2 btn-icon btn-shadow btn-outline-2x" outline
+                                    color="success">
+                                <i className="lnr-user btn-icon-wrapper"> </i>
+                                <Link to="/homepage" style={{textDecoration:"none"}}>Homepage</Link>
+
+                            </Button>
+                            <Button className="mb-2 mr-2 btn-icon btn-shadow btn-outline-2x" outline
+                                    color="info">
+                                <i className="lnr-paperclip btn-icon-wrapper"> </i>
+                                <Link to="/report" style={{textDecoration:"none"}}>Report</Link>
+
+                            </Button>
+                            <Button className="mb-2 mr-2 btn-icon btn-shadow btn-outline-2x" outline
+                                    color="focus">
+                                <i className="lnr-keyboard btn-icon-wrapper"> </i>
+                                <Link to="/form" style={{textDecoration:"none"}}>Form</Link>
+
+                            </Button>
                         </div>
                     </div>
                 </CSSTransitionGroup>
